@@ -14,7 +14,7 @@ std::mutex iom; ////< @note in ui_state_machine.h L15
 ## 对消息框架的理解
 
 三个状态机(`bank_machine`)以`receiver`的形式持有消息队列，而`receiver`持有类型转换函数，
-所以在`main`函数中可以通过`Messaging::sender atm_queue(bank.get_sender());`将消息队列
+所以在`main`函数中可以通过`Messaging::sender atm_queue(machine.get_sender());`将消息队列
 的指针传递到`sender`当中，接下来`main`函数通过`sender`对象向消息队列传输消息。
 
 消息队列通过将STL容器的`front()`和`pop()`放在一起操作，并用互斥元锁定实现了线程安全。
